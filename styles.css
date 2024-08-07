@@ -224,7 +224,7 @@ input[type="number"] {
     }
 
     output {
-        font-size: 24px;
+        font-size: 15px;
     }
 
     .output-group.inline {
@@ -233,7 +233,7 @@ input[type="number"] {
     }
 
     .output-group.inline label {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .output-group.inline .output-wrapper {
@@ -242,11 +242,11 @@ input[type="number"] {
     }
 
     .output-group.inline output {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .output-group.inline .unit.no-frame {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .output-group.total.inline output {
