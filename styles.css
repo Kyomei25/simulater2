@@ -189,6 +189,10 @@ input[type="number"] {
         padding: 10px;
     }
 
+    .main-title {
+        font-size: 30px;
+    }    
+
     h1 {
         font-size: 30px;
     }
