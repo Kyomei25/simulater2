@@ -100,7 +100,6 @@ input[type="number"] {
     align-items: center;
     justify-content: flex-end;
     background-color: #e6f7ff;
-    border: 1px solid #009bdd;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
@@ -137,27 +136,27 @@ input[type="number"] {
 
 .output-group.total.inline {
     background-color: #f9f9f9;
-    border-color: #f1b315;
+    border-color: #009bdd;
 }
 
 .output-group.total.inline output {
-    color: #f1b315;
-    font-size: 28px;
+    color: #009bdd;
+    font-size: 30px;
 }
 
 .output-group.total.inline {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: #f9f9f9;
-    border: 1px solid #f1b315;
+    background-color: #e6f7ff;
+    border: 2px solid #009bdd;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
 }
 
 .output-group.total.inline .output-label {
-    font-size: 22px;
+    font-size: 30px;
     font-weight: bold;
     white-space: nowrap;
     color: #545454;
@@ -165,7 +164,7 @@ input[type="number"] {
 
 .output-group.total.inline output {
     font-weight: bold;
-    color: #f1b315;
+    color: #009bdd;
     font-size: 40px;
     margin: 0 5px;
 }
@@ -174,7 +173,8 @@ input[type="number"] {
     background-color: transparent;
     border: none;
     padding: 0;
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bold;
     color: #545454;
 }
 
