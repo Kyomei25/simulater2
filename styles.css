@@ -178,6 +178,11 @@ input[type="number"] {
     color: #545454;
 }
 
+#assetAllocationChart {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 /* スマートフォン向けスタイル */
 @media (max-width: 600px) {
     body {

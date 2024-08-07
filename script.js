@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('asset-calculator');
     const inputs = form.querySelectorAll('input[type="number"]');
+    let assetAllocationChart;
 
     inputs.forEach(input => {
         input.addEventListener('input', function() {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         calculateNonInvestedAssets();
         calculateInvestedAssets();
         calculateTotalAssets();
+        updateChart();
     }
 
     function calculateNonInvestedAssets() {
@@ -39,6 +41,44 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('total-assets').textContent = totalAssets.toFixed(1);
     }
 
-    // 初期計算
+    function updateChart() {
+        const ctx = document.getElementById('assetAllocationChart').getContext('2d');
+        
+        const nonInvestedAssets = parseFloat(document.getElementById('total-non-invested').textContent) || 0;
+        const investedAssets = parseFloat(document.getElementById('total-invested').textContent) || 0;
+
+        const data = {
+            labels: ['運用しない資産', '運用する資産'],
+            datasets: [{
+                data: [nonInvestedAssets, investedAssets],
+                backgroundColor: ['#FF6384', '#36A2EB'],
+                hoverBackgroundColor: ['#FF6384', '#36A2EB']
+            }]
+        };
+
+        if (assetAllocationChart instanceof Chart) {
+            assetAllocationChart.data = data;
+            assetAllocationChart.update();
+        } else {
+            assetAllocationChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '資産配分'
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // 初期計算とグラフ描画
     calculateAll();
 });
