@@ -226,7 +226,20 @@ input[type="number"] {
     output {
         font-size: 15px;
     }
-    
+    /* スマートフォン向けスタイル */
+@media (max-width: 600px) {
+    .output-group.inline label {
+        font-size: 15px;
+    }
+
+    .output-group.inline output {
+        font-size: 20px;
+    }
+
+    .output-group.inline .unit {
+        font-size: 15px;
+    }
+}
     /* スマートフォン向けスタイル */
     @media (max-width: 600px) {
         .output-label {
