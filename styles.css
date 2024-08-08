@@ -228,7 +228,7 @@ input[type="number"] {
     }
     /* スマートフォン向けスタイル */
 @media (max-width: 600px) {
-    .output-group.inline label {
+    .output-group.inline .output-label {
         font-size: 15px;
     }
 
@@ -236,7 +236,7 @@ input[type="number"] {
         font-size: 20px;
     }
 
-    .output-group.inline .unit {
+    .output-group.inline .unit.no-frame {
         font-size: 15px;
     }
 }
