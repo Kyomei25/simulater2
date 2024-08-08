@@ -226,6 +226,13 @@ input[type="number"] {
     output {
         font-size: 15px;
     }
+    
+    /* スマートフォン向けスタイル */
+    @media (max-width: 600px) {
+        .output-label {
+            font-size: 15px; /* スマートフォンでのフォントサイズ */
+        }
+    }
 
     .output-group.inline {
         flex-wrap: nowrap;
