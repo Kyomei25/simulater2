@@ -226,7 +226,7 @@ input[type="number"] {
     output {
         font-size: 15px;
     }
-    
+
     .output-group.inline {
         flex-wrap: nowrap;
         justify-content: flex-end;
@@ -250,7 +250,7 @@ input[type="number"] {
     }
 
     .output-group.total.inline output {
-        font-size: 24px;
+        font-size: 15px;
     }
 
     .output-group.total.inline {
@@ -262,7 +262,7 @@ input[type="number"] {
     }
 
     .output-group.total.inline output {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .output-group.total.inline .unit.no-frame {
