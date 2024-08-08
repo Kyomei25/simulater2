@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     },
                     datalabels: {
-                        color: '#fff',
+                        color: '#000',
                         font: {
                             weight: 'bold',
-                            size: 16
+                            size: 20
                         },
                         formatter: (value, ctx) => {
                             const percentage = ((value / totalAssets) * 100).toFixed(1) + '%';
