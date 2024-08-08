@@ -227,6 +227,9 @@ input[type="number"] {
         font-size: 15px;
     }
 
+    .output-label {
+        font-size: 15px; /* スマートフォンでのフォントサイズ */
+
     .output-group.inline {
         flex-wrap: nowrap;
         justify-content: flex-end;
