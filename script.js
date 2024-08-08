@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalInvested = parseFloat(document.getElementById('total-invested').textContent) || 0;
         const totalAssets = totalNonInvested + totalInvested;
         document.getElementById('total-assets').textContent = totalAssets.toFixed(1);
+        return totalAssets;
     }
 
     function updateChart() {
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const nonInvestedAssets = parseFloat(document.getElementById('total-non-invested').textContent) || 0;
         const investedAssets = parseFloat(document.getElementById('total-invested').textContent) || 0;
+        const totalAssets = calculateTotalAssets();
 
         const data = {
             labels: ['運用しない資産', '運用する資産'],
@@ -56,27 +58,83 @@ document.addEventListener('DOMContentLoaded', function() {
             }]
         };
 
-        if (assetAllocationChart instanceof Chart) {
-            assetAllocationChart.data = data;
-            assetAllocationChart.update();
-        } else {
-            assetAllocationChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                cutout: '60%',
+                layout: {
+                    padding: {
+                        top: 40 // グラフ上部に間を開ける
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        padding: {
+                            bottom: 20
                         },
-                        title: {
-                            display: true,
-                            text: '資産配分'
+                        labels: {
+                            font: {
+                                size: 20
+                            }
+                        }
+                    },
+                    title: {
+                        display: false // タイトル（資産配分）を非表示にする
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const percentage = ((value / totalAssets) * 100).toFixed(1);
+                                return `${label}: ${value.toFixed(1)}万円 (${percentage}%)`;
+                            }
+                        },
+                        titleFont: {
+                            size: 20
+                        },
+                        bodyFont: {
+                            size: 16
+                        }
+                    },
+                    datalabels: {
+                        color: '#fff',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        },
+                        formatter: (value, ctx) => {
+                            const percentage = ((value / totalAssets) * 100).toFixed(1) + '%';
+                            return percentage;
                         }
                     }
-                }
-            });
+                },
+            },
+            plugins: [ChartDataLabels]
+        };
+
+        if (assetAllocationChart instanceof Chart) {
+            assetAllocationChart.data = data;
+            assetAllocationChart.options = config.options;
+            assetAllocationChart.update();
+        } else {
+            assetAllocationChart = new Chart(ctx, config);
         }
+
+        // 総資産額を中央に表示
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = '#000';
+        const centerX = assetAllocationChart.width / 2;
+        const centerY = assetAllocationChart.height / 2;
+        ctx.fillText('総資産:', centerX, centerY - 15);
+        ctx.font = 'bold 20px Arial';
+        ctx.fillText(`${totalAssets.toFixed(1)}万円`, centerX, centerY + 15);
     }
 
     // 初期計算とグラフ描画
